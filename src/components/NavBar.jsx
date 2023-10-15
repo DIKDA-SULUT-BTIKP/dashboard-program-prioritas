@@ -1,9 +1,10 @@
-import { Link } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom"; // Import NavLink and useLocation
 import Logo from "../assets/ic_logo.png";
 import { useState } from "react";
 
 function Navbar() {
-  const [isOpen, setIsOpen] = useState(false); // Change the initial state to closed
+  const location = useLocation(); // Get the current location
+  const [isOpen, setIsOpen] = useState(false);
 
   const toggleMobileMenu = () => {
     setIsOpen(!isOpen);
@@ -12,12 +13,16 @@ function Navbar() {
   return (
     <nav className="fixed top-0 left-0 z-20 w-full bg-white border-b border-gray-200">
       <div className="flex flex-wrap items-center justify-between max-w-screen-xl p-4 mx-auto">
-        <Link to="/" className="flex items-center">
+        <NavLink
+          to="/"
+          className="flex items-center"
+          activeClassName="text-red-600"
+        >
           <img src={Logo} className="h-8 mr-3" alt="Flowbite Logo" />
           <span className="self-center text-xl font-semibold text-red-600 md:text-2xl whitespace-nowrap">
             Dashboard Program Prioritas
           </span>
-        </Link>
+        </NavLink>
 
         <div className="md:hidden" onClick={toggleMobileMenu}>
           {isOpen ? (
@@ -61,28 +66,24 @@ function Navbar() {
         >
           <ul className="flex flex-col p-4 mt-4 font-medium border border-gray-100 rounded-lg md:p-0 bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white">
             <li onClick={toggleMobileMenu}>
-              <Link
-                to="/"
-                className="block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-red-700"
+              <NavLink
+                to="/raport"
+                className={`block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent ${
+                  location.pathname === "/raport" ? "text-red-600" : ""
+                }`}
               >
-                Data Raport Pendidikan
-              </Link>
+                Raport Pendidikan
+              </NavLink>
             </li>
             <li onClick={toggleMobileMenu}>
-              <Link
-                to="/sma"
-                className="block py-2 pl-3 pr-4 text-gray-900 rounded hover-bg-gray-100 md:hover-bg-transparent md:hover:text-red-700"
+              <NavLink
+                to="/school"
+                className={`block py-2 pl-3 pr-4 text-gray-900 rounded hover-bg-gray-100 md:hover-bg-transparent ${
+                  location.pathname === "/school" ? "text-red-600" : ""
+                }`}
               >
-                SMA
-              </Link>
-            </li>
-            <li onClick={toggleMobileMenu}>
-              <Link
-                to="smk"
-                className="block py-2 pl-3 pr-4 text-gray-900 rounded hover-bg-gray-100 md:hover-bg-transparent md:hover:text-red-700"
-              >
-                SMK
-              </Link>
+                Progress Akun Belajar.id
+              </NavLink>
             </li>
           </ul>
         </div>

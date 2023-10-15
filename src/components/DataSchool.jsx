@@ -51,9 +51,6 @@ const DataSchool = () => {
   const lengthSudah = sudahData.length;
   const lengthBelum = belumData.length;
 
-  console.log(lengthSudah);
-  console.log(lengthBelum);
-
   // Define data for the bar chart
   const chartData = {
     labels: ["Sudah Selesai Ekspolrasi", "Belum Selesai Ekspolrasi"],
