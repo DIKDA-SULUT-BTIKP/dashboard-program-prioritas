@@ -112,7 +112,7 @@ const DataSchool = () => {
           </div>
         </div>
       </div>
-      <div className="xl:flex xl:justify-end">
+      <div className="mt-4 xl:flex xl:justify-end">
         <input
           type="text"
           placeholder="Cari berdasarkan nama sekolah"
