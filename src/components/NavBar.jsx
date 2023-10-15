@@ -1,9 +1,9 @@
-import { NavLink, useLocation } from "react-router-dom"; // Import NavLink and useLocation
+import { NavLink, useLocation } from "react-router-dom";
 import Logo from "../assets/ic_logo.png";
 import { useState } from "react";
 
 function Navbar() {
-  const location = useLocation(); // Get the current location
+  const location = useLocation();
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleMobileMenu = () => {
@@ -65,26 +65,30 @@ function Navbar() {
           id="navbar-sticky"
         >
           <ul className="flex flex-col p-4 mt-4 font-medium border border-gray-100 rounded-lg md:p-0 bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-white">
-            <li onClick={toggleMobileMenu}>
-              <NavLink
-                to="/raport"
-                className={`block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent ${
-                  location.pathname === "/raport" ? "text-red-600" : ""
-                }`}
-              >
-                Raport Pendidikan
-              </NavLink>
-            </li>
-            <li onClick={toggleMobileMenu}>
-              <NavLink
-                to="/school"
-                className={`block py-2 pl-3 pr-4 text-gray-900 rounded hover-bg-gray-100 md:hover-bg-transparent ${
-                  location.pathname === "/school" ? "text-red-600" : ""
-                }`}
-              >
-                Progress Akun Belajar.id
-              </NavLink>
-            </li>
+            {location.pathname !== "/" && (
+              <li onClick={toggleMobileMenu}>
+                <NavLink
+                  to="/raport"
+                  className={`block py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent ${
+                    location.pathname === "/raport" ? "text-red-600" : ""
+                  }`}
+                >
+                  Raport Pendidikan
+                </NavLink>
+              </li>
+            )}
+            {location.pathname !== "/" && (
+              <li onClick={toggleMobileMenu}>
+                <NavLink
+                  to="/school"
+                  className={`block py-2 pl-3 pr-4 text-gray-900 rounded hover-bg-gray-100 md:hover-bg-transparent ${
+                    location.pathname === "/school" ? "text-red-600" : ""
+                  }`}
+                >
+                  Progress Akun Belajar.id
+                </NavLink>
+              </li>
+            )}
           </ul>
         </div>
       </div>
